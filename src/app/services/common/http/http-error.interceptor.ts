@@ -1,10 +1,8 @@
-import { Router } from '@angular/router';
 import {Injectable} from '@angular/core';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 
-/** Pass untouched request through to the next request handler. */
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
 	constructor() { }
