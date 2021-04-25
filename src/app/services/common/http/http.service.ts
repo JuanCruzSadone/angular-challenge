@@ -7,8 +7,7 @@ import * as _ from "lodash";
 
 const httpHeaders = new HttpHeaders({
   'Content-Type': 'application/json',
-  'Authorization': 'my-auth-token',
-  'Access-Control-Allow-Origin': '*'
+  'X-API-Key': 'SKargLkdTTkIO8FCRNDjiNNG8rcf3VhzHDxYFChz'
 });
 
 @Injectable({
