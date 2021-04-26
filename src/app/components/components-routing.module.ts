@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MembersListComponent } from './congress-members/list/members-list.component';
+import { MembersListComponent } from './congress-members/List/members-list.component';
 import { MembersViewComponent } from './congress-members/view/members-view.component';
 
 

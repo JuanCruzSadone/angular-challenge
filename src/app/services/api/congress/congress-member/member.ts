@@ -13,5 +13,6 @@ export interface IMember {
     party: string;
     total_votes: number;
     phone: string;
+    current_party: string;
 }
 
