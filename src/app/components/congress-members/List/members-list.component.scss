@@ -1,0 +1,21 @@
+
+
+.flex-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+  }
+  
+.flex-container > div {
+    background-color: #f1f1f1;
+    width: 700px;
+    margin: 10px;
+}
+
+.w-75{
+    width: 75px;
+}
+
+.w-100{
+    width: 100px;
+}

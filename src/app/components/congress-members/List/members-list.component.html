@@ -1,0 +1,89 @@
+
+
+<div class="flex-container">
+   <div>
+      <div class="search">
+         <form name="form" (submit)="onSubmit()" [formGroup]="form">
+            <mat-form-field style="margin-left: 20px;" class="example-full-width">
+               <mat-label>Search</mat-label>
+                  <input  matInput placeholder="" formControlName="search" value="search">
+             </mat-form-field>
+             <button type="submit" style="margin-left: 20px;" mat-flat-button color="primary">Search</button>
+             <mat-slide-toggle style="margin-left: 20px;" formControlName="toggle" value="false" (change)="change($event)">Advanced search</mat-slide-toggle>
+             <div formGroupName="advanced" *ngIf="advanced">
+               <mat-slide-toggle style="margin-left: 20px;" formControlName="first_name">Name</mat-slide-toggle>
+               <mat-slide-toggle style="margin-left: 20px;" formControlName="last_name">Last Name</mat-slide-toggle>
+               <mat-slide-toggle style="margin-left: 20px;" formControlName="gender">Gender</mat-slide-toggle>
+               <mat-slide-toggle style="margin-left: 20px;" formControlName="phone">Phone</mat-slide-toggle>
+            </div>
+         </form>
+      </div>
+
+      <mat-progress-bar *ngIf="loading" mode="query"></mat-progress-bar>
+
+      <table *ngIf="!loading" mat-table [dataSource]="dataSource" class="mat-elevation-z8" #table>
+
+         <!--- Note that these columns can be defined in any order.
+               The actual rendered columns are set as a property on the row definition" -->
+       
+         <!-- Name Column -->
+         <ng-container matColumnDef="First Name">
+           <th class="w-100" mat-header-cell *matHeaderCellDef> First Name </th>
+           <td mat-cell *matCellDef="let element"> {{element.first_name}} </td>
+         </ng-container>
+
+         <!-- Last Name Column -->
+         <ng-container matColumnDef="Last Name">
+            <th class="w-100" mat-header-cell *matHeaderCellDef> Last Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.last_name}} </td>
+         </ng-container>
+
+         <!-- Date of birth Column -->
+         <ng-container matColumnDef="Date of birth">
+            <th class="w-100" mat-header-cell *matHeaderCellDef> Date of birth  </th>
+            <td mat-cell *matCellDef="let element"> {{element.date_of_birth | date:'MM/dd/yyyy'}} </td>
+         </ng-container>
+
+         <!-- Gender Column -->
+         <ng-container matColumnDef="Gender">
+            <th class="w-100" mat-header-cell *matHeaderCellDef> Gender  </th>
+            <td mat-cell *matCellDef="let element"> {{element.gender === 'M' ? 'Male' : 'Female'}} </td>
+         </ng-container>
+
+         <!-- Phone Column -->
+         <ng-container matColumnDef="Phone">
+            <th class="w-100" mat-header-cell *matHeaderCellDef> Phone  </th>
+            <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+         </ng-container>
+
+         <!-- Votes Column -->
+         <ng-container matColumnDef="Votes">
+            <th class="w-100" mat-header-cell *matHeaderCellDef> Votes  </th>
+            <td mat-cell *matCellDef="let element"> {{element.total_votes}} </td>
+         </ng-container>
+
+         <!-- Info Column -->
+         <ng-container matColumnDef="Info">
+            <th class="w-100" mat-header-cell *matHeaderCellDef> More Information  </th>
+            <td mat-cell *matCellDef="let element; let i = index;"> 
+               <button mat-button color="warn" (click)="viewMember(i)">View</button> 
+            </td>
+         </ng-container>
+         
+      
+         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+       </table>
+
+      <mat-paginator [length]="100"
+         [pageSize]="7"
+         [pageSizeOptions]="[5, 10, 25, 100]"
+         [showFirstLastButtons]="true" 
+         [length]="totalSize"
+         [pageIndex]="currentPage"
+         (page)="handlePage($event)"
+         #paginator>
+      </mat-paginator>
+   </div>
+ 
+</div>
