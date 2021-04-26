@@ -3,7 +3,7 @@
 
 ## Clone Repo
 
-Run this command below in order to install project dependencies.
+Run this command below in order to clone the repository.
 
 ```bash
 git clone https://github.com/JuanCruzSadone/angular-challenge.git
